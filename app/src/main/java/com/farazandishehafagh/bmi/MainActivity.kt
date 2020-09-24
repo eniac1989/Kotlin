@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val txtName = findViewById<EditText>(R.id.txtName)
         val txtAge = findViewById<EditText>(R.id.txtAge)
-        val txtGender = findViewById<Switch>(R.id.swtGender)
+        val swtGender = findViewById<Switch>(R.id.swtGender)
         val txtHeight = findViewById<EditText>(R.id.txtHeight)
         val txtWeight = findViewById<EditText>(R.id.txtWeight)
         val btnSubmit = findViewById<Button>(R.id.btnSubmit)
@@ -26,7 +26,12 @@ class MainActivity : AppCompatActivity() {
                 txtHeight.text.toString().toDouble(),
                 txtWeight.text.toString().toDouble()
             )
-            showMeTheResult(bmi)
+            showMeTheResult(
+                bmi,
+                txtName.text.toString(),
+                txtAge.text.toString(),
+                swtGender.isChecked
+            )
         }
     }
 
@@ -35,37 +40,72 @@ class MainActivity : AppCompatActivity() {
         return bmi
     }
 
-    fun showMeTheResult(bmi: Double) {
+    fun showMeTheResult(bmi: Double, name: String, age: String, gender: Boolean) {
 
-        if (bmi < 18.5)
-            Toast.makeText(
-                baseContext,
-                "You are in 'Underweight' Category",
-                Toast.LENGTH_LONG
-            ).show()
-        else if (bmi in 18.5..24.9)
-            Toast.makeText(
-                baseContext,
-                "You are in 'Normal (healthy weight)' Category",
-                Toast.LENGTH_LONG
-            ).show()
-        else if (bmi in 25.0..29.9)
-            Toast.makeText(
-                baseContext,
-                "You are in 'Normal (healthy weight)' Category",
-                Toast.LENGTH_LONG
-            ).show()
-        else if (bmi in 30.0..34.9)
-            Toast.makeText(
-                baseContext,
-                "You are in 'Moderately obese' Category",
-                Toast.LENGTH_LONG
-            ).show()
+        if (bmi < 18.5) {
+            if (!gender)
+                Toast.makeText(
+                    baseContext,
+                    "dear Mr.$name,at the age of $age , You are in 'Underweight' Category",
+                    Toast.LENGTH_LONG
+                ).show()
+            else
+                Toast.makeText(
+                    baseContext,
+                    "dear Miss/Mrs.$name,at the age of $age , You are in 'Underweight' Category",
+                    Toast.LENGTH_LONG
+                ).show()
+        } else if (bmi in 18.5..24.9) {
+            if (!gender)
+                Toast.makeText(
+                    baseContext,
+                    "dear Mr.$name,at the age of $age , You are in 'Normal (healthy weight)' Category",
+                    Toast.LENGTH_LONG
+                ).show()
+            else
+                Toast.makeText(
+                    baseContext,
+                    "dear Miss/Mrs.$name,at the age of $age , You are in 'Normal (healthy weight)' Category",
+                    Toast.LENGTH_LONG
+                ).show()
+        } else if (bmi in 25.0..29.9) {
+            if (!gender)
+                Toast.makeText(
+                    baseContext,
+                    "dear Mr.$name,at the age of $age ,You are in 'Normal (healthy weight)' Category",
+                    Toast.LENGTH_LONG
+                ).show()
+            else
+                Toast.makeText(
+                    baseContext,
+                    "dear Miss/Mrs.$name,at the age of $age ,You are in 'Normal (healthy weight)' Category",
+                    Toast.LENGTH_LONG
+                ).show()
+        } else if (bmi in 30.0..34.9)
+            if (!gender)
+                Toast.makeText(
+                    baseContext,
+                    "dear Mr.$name,at the age of $age ,You are in 'Moderately obese' Category",
+                    Toast.LENGTH_LONG
+                ).show()
+            else
+                Toast.makeText(
+                    baseContext,
+                    "dear Miss/Mrs.$name,at the age of $age ,You are in 'Moderately obese' Category",
+                    Toast.LENGTH_LONG
+                ).show()
         else if (bmi >= 35)
-            Toast.makeText(
-                baseContext,
-                "You are in 'Severely obese' Category",
-                Toast.LENGTH_LONG
-            ).show()
+            if (!gender)
+                Toast.makeText(
+                    baseContext,
+                    "dear Mr.$name,at the age of $age ,You are in 'Severely obese' Category",
+                    Toast.LENGTH_LONG
+                ).show()
+            else
+                Toast.makeText(
+                    baseContext,
+                    "dear Miss/Mrs.$name,at the age of $age ,You are in 'Severely obese' Category",
+                    Toast.LENGTH_LONG
+                ).show()
     }
 }
