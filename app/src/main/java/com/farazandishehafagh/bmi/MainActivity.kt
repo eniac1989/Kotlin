@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
+    var validationResult: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,25 +23,79 @@ class MainActivity : AppCompatActivity() {
         val btnSubmit = findViewById<Button>(R.id.btnSubmit)
 
         btnSubmit.setOnClickListener {
-            val bmi = calculateBMI(
-                txtHeight.text.toString().toDouble(),
-                txtWeight.text.toString().toDouble()
-            )
-            showMeTheResult(
-                bmi,
+            validationResult = validateInfo(
                 txtName.text.toString(),
                 txtAge.text.toString(),
-                swtGender.isChecked
+                txtHeight.text.toString(),
+                txtWeight.text.toString()
             )
+            if (validationResult) {
+                val bmi = calculateBMI(
+                    txtHeight.text.toString().toDouble(),
+                    txtWeight.text.toString().toDouble()
+                )
+                showMeTheResult(
+                    bmi,
+                    txtName.text.toString(),
+                    txtAge.text.toString(),
+                    swtGender.isChecked
+                )
+            }
         }
     }
 
-    fun calculateBMI(height: Double, weight: Double): Double {
-        val bmi = weight / (height * height)
-        return bmi
+    private fun validateInfo(name: String, age: String, height: String, weight: String): Boolean {
+        when {
+            name.isEmpty() -> {
+                Toast.makeText(
+                    baseContext,
+                    "Name is required",
+                    Toast.LENGTH_LONG
+                ).show()
+                return false
+            }
+            age.isEmpty() -> {
+                Toast.makeText(
+                    baseContext,
+                    "Age is required",
+                    Toast.LENGTH_LONG
+                ).show()
+                return false
+            }
+            height.isEmpty() -> {
+                Toast.makeText(
+                    baseContext,
+                    "Height is required",
+                    Toast.LENGTH_LONG
+                ).show()
+                return false
+            }
+            height.toDouble() > 100 -> {
+                Toast.makeText(
+                    baseContext,
+                    "Please enter the height in meters",
+                    Toast.LENGTH_LONG
+                ).show()
+                return false
+            }
+            weight.isEmpty() -> {
+                Toast.makeText(
+                    baseContext,
+                    "Weight is required",
+                    Toast.LENGTH_LONG
+                ).show()
+                return false
+            }
+            else -> return true
+        }
     }
 
-    fun showMeTheResult(bmi: Double, name: String, age: String, gender: Boolean) {
+    private fun calculateBMI(height: Double, weight: Double): Double {
+
+        return weight / (height * height)
+    }
+
+    private fun showMeTheResult(bmi: Double, name: String, age: String, gender: Boolean) {
 
         if (bmi < 18.5) {
             if (!gender)
