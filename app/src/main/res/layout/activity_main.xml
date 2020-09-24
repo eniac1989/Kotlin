@@ -1,149 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:orientation="vertical"
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp"
     tools:context=".MainActivity">
 
-    <LinearLayout
+
+    <ImageView
+        android:id="@+id/imgAccount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
-        android:layout_width="match_parent"
+        android:layout_marginEnd="70dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/ic_account_black_36dp"
+        app:layout_constraintEnd_toStartOf="@+id/txtName"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txtName"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2">
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="16dp"
+        android:hint="@string/name"
+        android:inputType="text"
+        android:maxLength="40"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgAccount"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:layout_marginRight="70dp"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_account_black_36dp" />
 
-        <EditText
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtName"
-            android:inputType="text"
-            android:hint="@string/name" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tvGender"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2">
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="70dp"
 
-        <TextView
-            android:text="@string/gender"
-            android:layout_marginStart="20dp"
-            android:layout_weight="1"
-            android:layout_marginEnd="10dp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content" />
+        android:text="@string/gender"
+        app:layout_constraintBaseline_toBaselineOf="@+id/swtGender"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toStartOf="@+id/swtGender"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <Switch
+    <Switch
 
-            android:text="@string/male"
-            android:id="@+id/swtGender"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_marginTop="20dp"
-
-        android:layout_width="match_parent"
+        android:id="@+id/swtGender"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2">
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="70dp"
+        android:text="@string/male"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvGender"
+        app:layout_constraintTop_toBottomOf="@+id/txtName" />
 
-        <TextView
-            android:text="@string/age"
-            android:layout_marginStart="20dp"
-            android:layout_weight="1"
-            android:layout_marginEnd="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
 
-        <EditText
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtAge"
-            android:inputType="number"
-            android:hint="@string/age" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_marginTop="20dp"
-
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tvAge"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2">
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="70dp"
+        android:text="@string/age"
+        app:layout_constraintEnd_toStartOf="@+id/txtAge"
+app:layout_constraintBaseline_toBaselineOf="@id/txtAge"
+        app:layout_constraintTop_toBottomOf="@+id/tvGender"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:text="@string/height"
-            android:layout_marginStart="20dp"
-            android:layout_weight="1"
-            android:layout_marginEnd="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <EditText
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:id="@+id/txtHeight"
-            android:hint="@string/height" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
+    <EditText
+        android:id="@+id/txtAge"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2">
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="16dp"
+        android:hint="@string/age"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvAge"
+        app:layout_constraintTop_toBottomOf="@+id/swtGender" />
 
-        <TextView
-            android:text="@string/weight"
-            android:layout_marginStart="20dp"
-            android:layout_weight="1"
-            android:layout_marginEnd="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
 
-        <EditText
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:id="@+id/txtWeight"
-            android:hint="@string/weight" />
-
-    </LinearLayout>
-    <LinearLayout
-       android:gravity="center"
-        android:layout_marginTop="80dp"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tvHeight"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="70dp"
+        android:text="@string/height"
+        app:layout_constraintEnd_toStartOf="@+id/txtHeight"
+        app:layout_constraintBaseline_toBaselineOf="@id/txtHeight"
+        app:layout_constraintTop_toBottomOf="@+id/tvAge"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-            android:text="@string/submit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnSubmit" />
+    <EditText
+        android:id="@+id/txtHeight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="16dp"
+        android:hint="@string/height"
+        android:inputType="numberDecimal"
+        app:layout_constraintTop_toBottomOf="@+id/txtAge"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvHeight" />
 
-    </LinearLayout>
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/tvWeight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="70dp"
+        android:text="@string/weight"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtWeight"
+        app:layout_constraintTop_toBottomOf="@id/tvHeight"
+        app:layout_constraintEnd_toStartOf="@+id/txtWeight"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/txtWeight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="16dp"
+        android:hint="@string/weight"
+        android:inputType="numberDecimal"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvWeight"
+        app:layout_constraintTop_toBottomOf="@id/txtHeight" />
+
+<androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.5"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+</androidx.constraintlayout.widget.Guideline>
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="285dp"
+        android:text="@string/submit"
+        app:layout_constraintTop_toTopOf="@id/guideline"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
